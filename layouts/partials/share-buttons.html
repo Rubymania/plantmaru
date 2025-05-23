@@ -1,0 +1,40 @@
+<div class="share-buttons mt-6 border-t pt-4">
+  <p class="font-semibold mb-2">이 글 공유하기</p>
+  <div class="flex items-center flex-wrap text-sm">
+
+    <!-- 카카오톡 -->
+    <a href="javascript:void(0);" onclick="kakaoShare()"
+       class="flex items-center hover:opacity-80 mr-4" title="카카오톡 공유">
+      <img src="/icons/btn_kakao.svg" alt="카카오톡" class="w-6 h-6 mr-1" />
+      <span>카카오톡</span>
+    </a>
+
+    <!-- 네이버 -->
+    <a href="https://share.naver.com/web/shareView.nhn?url={{ .Permalink }}&title={{ .Title }}" target="_blank"
+       class="flex items-center hover:opacity-80 ml-3" title="네이버 공유">
+      <img src="/icons/btn_naver.svg" alt="네이버" class="w-6 h-6 mr-1" />
+      <span>네이버</span>
+    </a>
+
+  </div>
+
+  <!-- 카카오 SDK -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script>
+    Kakao.init('465178513bc6c112a1ed531f7b6c8a49');
+    function kakaoShare() {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: "{{ .Title }}",
+          description: "Plantmaru 블로그 포스트",
+          imageUrl: "{{ "images/share-thumbnail.png" | absURL }}",
+          link: {
+            mobileWebUrl: "{{ .Permalink }}",
+            webUrl: "{{ .Permalink }}"
+          }
+        }
+      });
+    }
+  </script>
+</div>
