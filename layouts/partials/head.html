@@ -155,10 +155,10 @@
   </script>
   {{ end }}
   {{ end }}
-<!-- Open Graph for KakaoTalk -->
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="{{ .Title }}">
-<meta property="og:description" content="{{ .Params.description | default "Plantmaru 블로그 포스트" }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta property="og:title" content="{{ .Title | default .Site.Title }}">
+<meta property="og:description" content="{{ .Params.description | default .Site.Params.description }}">
 <meta property="og:image" content="{{ "images/share-thumbnail.jpg" | absURL }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
 </head>

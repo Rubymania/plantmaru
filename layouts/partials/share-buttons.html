@@ -18,23 +18,23 @@
 
   </div>
 
-  <!-- 카카오 SDK -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script>
-    Kakao.init('465178513bc6c112a1ed531f7b6c8a49');
-    function kakaoShare() {
-      Kakao.Link.sendDefault({
-        objectType: 'feed',
-        content: {
-          title: "{{ .Title }}",
-          description: "Plantmaru 블로그 포스트",
-          imageUrl: "{{ "images/share-thumbnail.png" | absURL }}",
-          link: {
-            mobileWebUrl: "{{ .Permalink }}",
-            webUrl: "{{ .Permalink }}"
-          }
+<!-- 카카오 SDK -->
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+  Kakao.init('465178513bc6c112a1ed531f7b6c8a49');
+  function kakaoShare() {
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: {{ printf "%q" .Title }},
+        description: "Plantmaru 블로그 포스트",
+        imageUrl: {{ printf "%q" ("images/share-thumbnail.png" | absURL) }},
+        link: {
+          mobileWebUrl: {{ printf "%q" .Permalink }},
+          webUrl: {{ printf "%q" .Permalink }}
         }
-      });
-    }
-  </script>
+      }
+    });
+  }
+</script>
 </div>

@@ -9,6 +9,6 @@ set HUGO_DIR=%USERPROFILE%\iCloudDrive\hugo_blog
 
 cd "%HUGO_DIR%"
 git add .
-git commit -m "?? Obsidian에서 자동 복사 및 퍼블리싱"
+git commit -m "Copy blog posts from Obsidian and Publishing..."
 git push origin main
 pause;
